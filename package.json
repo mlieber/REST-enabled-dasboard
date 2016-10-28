@@ -1,22 +1,34 @@
 {
-  "name": "httpserver",
+  "name": "rest_draw",
   "version": "1.0.0",
-  "description": "",
+  "description": "rest api for drawing",
   "main": "KukaHTTP-live.js",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "canvas": "^1.6.1",
-    "chart.js": "^2.3.0",
     "express": "^4.14.0",
-    "fabric": "^1.6.4",
-    "httpdispatcher": "^1.0.0",
-    "ocanvas": "^2.8.5"
+    "fs": "0.0.1-security",
+    "http": "0.0.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prestart": "npm install",
     "start": "node KukaHTTP-live.js"
   },
-  "author": "",
-  "license": "ISC"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mlieber/REST-enabled-dasboard.git"
+  },
+  "keywords": [
+    "REST",
+    "draw",
+    "canvas"
+  ],
+  "author": "Matt Lieber",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mlieber/REST-enabled-dasboard/issues"
+  },
+  "homepage": "https://github.com/mlieber/REST-enabled-dasboard#readme"
 }
