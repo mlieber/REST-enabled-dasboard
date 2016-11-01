@@ -1,4 +1,4 @@
-# REST-enabled-dasboard
+# REST-enabled-drawing
 
 ## Goal 
 The goal of this little app is to have the ability to show widgets on a web page and control their position through a REST API, i.e. POSTs in real-time, which will redraw the widgets via an image-stream (the request to the picture drawing is never closed).
