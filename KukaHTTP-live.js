@@ -1,18 +1,13 @@
-//Lets require/import the HTTP module
+//Lets do all of the imports first
 var http = require('http');
-//var dispatcher = require('httpdispatcher');
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser')
-//var fabric = require('fabric').fabric;
-//var canvas = fabric.createCanvasForNode(200, 200);
 var fs = require('fs')
 var path = require('path')
-//var canvas = require('canvas')
-// var ctx = canvas.getContext('2d');
-//var draw_robot = require('./draw_robot');
+// This is the draw js code for 2 objects
 var draw = require('./draw_badge');
-
+// Global variables for the 2 objects
 var robot1;
 var robot1_xcoord = 30;    
 var robot1_ycoord = 100;    
@@ -37,38 +32,38 @@ app.use(bodyParser.json());
  *
  */
  
-//router.get('/show', function (req, res, next) {
+// GET call
 app.get('/', function (req, res) {
  
- // var result = data.replace('boxx', i);
-   console.log("Xcoord: " + robot1_xcoord);
+  console.log("Xcoord: " + robot1_xcoord);
   res.setHeader('Content-Type', 'image/png');
+  res.setHeader('Refresh','1'); // refresh browser
+
   // redraw everything
-//  draw_badge(robot2_xcoord,robot2_ycoord).pngStream().pipe(res);
   draw(robot1_xcoord,robot1_ycoord, robot2_xcoord,robot2_ycoord).pngStream().pipe(res);
 
 });
 
 
  // Getting a POST
-app.post('/', function (req, res) {
+ app.post('/', function (req, res) {
   console.log(req.body.id);
-if (req.body.id=="1")
-{
-  console.log("robot1 change");
-  robot1_xcoord = req.body.xcoordinate;
-  robot1_ycoord = req.body.ycoordinate;
-}
-else
- if (req.body.id=="2")
-{
-  console.log("robot2 change");
+  if (req.body.id=="1")
+  {
+    console.log("robot1 change");
+    robot1_xcoord = req.body.xcoordinate;
+    robot1_ycoord = req.body.ycoordinate;
+  }
+  else
+  if (req.body.id=="2")
+  {
+    console.log("robot2 change");
 
-  robot2_xcoord = req.body.xcoordinate;
-  robot2_ycoord = req.body.ycoordinate;
-}
+    robot2_xcoord = req.body.xcoordinate;
+    robot2_ycoord = req.body.ycoordinate;
+  }
+
 res.send('Got a POST request' );
-
 
 
 });

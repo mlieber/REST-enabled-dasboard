@@ -1,14 +1,17 @@
 var Canvas = require('canvas')
 var fs = require('fs')
+var Image = Canvas.Image
+var canvas = new Canvas(600, 600)
+var ctx = canvas.getContext('2d')
 
 
+// draw a circle, acting as one object
 function draw_badge(x,y) {
     
 
    var x, y, i
 
   ctx.clearRect(0, 0, 120, 120)
-
   ctx.save()
 
   ctx.translate(160, 160) 
@@ -21,13 +24,11 @@ function draw_badge(x,y) {
   ctx.stroke()
   ctx.fill()
   
-  
  return canvas;
 }
 
-
+// draw a robot image, acting as one object
 function draw_robot(x,y) {
-
 
 var img = new Image()
 img.src = canvas.toBuffer()
@@ -35,18 +36,20 @@ ctx.drawImage(img, 0, 0, 50, 50)
 ctx.drawImage(img, 50, 0, 50, 50)
 ctx.drawImage(img, 100, 0, 50, 50)
 
-img = new Image()
 img.src = fs.readFileSync('./kuka.png')
 ctx.drawImage(img, 100, 0, img.width , img.height )
 
 //img = new Image()
 img.src = fs.readFileSync('./robot.jpeg')
 ctx.drawImage(img, x, y, img.width / 2, img.height / 2)
+// new
 
 canvas.createPNGStream().pipe(fs.createWriteStream('./image-robot.png'))
 return canvas
+
 }
 
+// Overall draw function
 function draw(x1,y1,x2,y2)
 {
   Image = Canvas.Image,
